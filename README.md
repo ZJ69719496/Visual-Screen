@@ -6,19 +6,18 @@
 在body里面设置一个div容器  然后在这个容器内部写各种元素
 只要设置好每个内部元素的 left top width height（不要用百分比的值  直接用px就可以了  然后设置文档页面大小变化的事件）
 
-window.onresize = function () {    
+window.onresize = function () {
+
       var winWidth = screen.width;
       var winHeight = screen.height;
-
       var docWidth = document.body.clientWidth;
       var docHeight = document.body.clientHeight;
-
       var wp = docWidth / winWidth;//宽度缩放比例
       var hp = docHeight / winHeight;//高度缩放比例
-
        var $div = $('#content');    
       $div.css('transform', "scale(" + wp + "," + hp + ")");
-      $div.css('transform-origin', "0 0");    
+      $div.css('transform-origin', "0 0");  
+      
 }
 
 ![](https://github.com/ZJ69719496/Visual-Screen/blob/master/screen.png)  
