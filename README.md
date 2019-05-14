@@ -14,7 +14,7 @@ window.onresize = function () {
       var docHeight = document.body.clientHeight;
       var wp = docWidth / winWidth;//宽度缩放比例
       var hp = docHeight / winHeight;//高度缩放比例
-       var $div = $('#content');    
+      var $div = $('#content');    
       $div.css('transform', "scale(" + wp + "," + hp + ")");
       $div.css('transform-origin', "0 0");  
       
