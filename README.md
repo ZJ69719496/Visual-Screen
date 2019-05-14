@@ -18,12 +18,13 @@ window.onresize = function () {
       $div.css('transform', "scale(" + wp + "," + hp + ")");
       $div.css('transform-origin', "0 0");  
       
-}
-正常页面
+}  
+
+正常页面  
 ![正常页面](https://github.com/ZJ69719496/Visual-Screen/blob/master/screen.png)  
-
-变窄
+  
+变窄  
 ![变窄](https://github.com/ZJ69719496/Visual-Screen/blob/master/z.png)  
-
-变宽
+  
+变宽  
 ![变宽](https://github.com/ZJ69719496/Visual-Screen/blob/master/k.png)  
