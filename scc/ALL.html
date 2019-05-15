@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>仓库可视化看板</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background-color: #16171c;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .block {
+            font-size: 15px;
+            border: #01a5fe 1px solid;
+            border-radius: 5px;
+            box-shadow: 0 0 6px 1px #3795c1
+        }
+
+        .block2 {
+            border: #01a5fe 1px solid;
+            border-radius: 5px;
+            box-shadow: 0 0 9px 3px #3795c1
+        }
+
+        .cycle {
+            border-radius: 250px;
+        }
+    </style>
+
+</head>
+
+<body oncontextmenu="self.event.returnValue=false"
+      style="height:100%;width:100%;background-image:url(./bg4.png);background-repeat: no-repeat;background-size: 100% 100%">
+    <div id="content"
+         style="width: 100%; height: 100%; position: absolute; transform: scale(1, 0.999074); transform-origin: 0px 0px;">
+
+        <!-- LOGO -->
+        <div class="logo"
+             style="height: 17px;width: 144px;position: absolute;left: 220px;top: 75px;background-image:url(./logo.png);background-repeat: no-repeat;background-size: 100% 100%;">
+        </div>
+        <!-- 大标题 -->
+        <div style="width: 370px;font-size: 42px;font-weight: bold;background: linear-gradient(to top, #31baff, #d7edf9, #FDF7EE);-webkit-background-clip: text;color: transparent;height: 51px;/* width:100%; */position: absolute;left: 775px;top: 64px;text-align: center;">
+            仓 库 可 视 化 看 板
+        </div>
+        <div style="width: 361px;font-size: 21px;font-weight: bold;background: linear-gradient(to top, #31baff, #d7edf9, #FDF7EE);-webkit-background-clip: text;color: transparent;height: 22px;/* width:100%; */position: absolute;left: 780px;top: 113px;text-align: center;">
+            Warehouse Visualization Kanban
+        </div>
+
+        <!-- 时间 -->
+        <div id="time" style="
+                            font-size: 25px;
+                            font-weight: bold;
+                            background: linear-gradient(to top, #31baff, #d7edf9, #FDF7EE);
+                            -webkit-background-clip: text;
+                            color:
+                            transparent;
+                            position:absolute;
+                            left: 1418px;
+                            top: 67px;
+                            ">00:00</div>
+        <div id="date"
+             style="font-size: 25px;font-weight: bold;background: linear-gradient(to top, #31baff, #d7edf9, #FDF7EE);-webkit-background-clip: text;color: transparent;position:absolute;left: 1506px;top: 67px;">
+            01.01
+        </div>
+        <div id="week"
+             style="width: 105px;font-size: 25px;font-weight: bold;background: linear-gradient(to top, #31baff, #d7edf9, #FDF7EE);-webkit-background-clip: text;color: transparent;position:absolute;left: 1603px;top: 67px;">
+            星期一
+        </div>
+
+
+
+        <div style="
+        position: absolute;
+        width: 1815px;
+        height: 360px;
+        background-color: #1d282e;
+        left: 56px;
+        top: 213px;
+        border-radius: 12px 12px 12px 12px;
+        ">
+            <table id="table1" style="width: 100%;height: 100%;">
+                <thead>
+                    <tr style="text-align:center;color: #42b3ef;font-weight: bold;font-size: 16px;">
+                        <td>序号</td>
+                        <td>产线</td>
+                        <td>订单</td>
+                        <td>物料号</td>
+                        <td>物料描述</td>
+                        <td>计划总计</td>
+                        <td>实时库存</td>
+                        <td>安全库存</td>
+                        <td>备料数量</td>
+                    </tr>
+                </thead>
+                <tbody style="color:#58d26d;text-align:center;">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="
+        position: absolute;
+        width: 1815px;
+        height: 360px;
+        background-color: #1d282e;
+        left: 56px;
+        top: 646px;
+        border-radius: 10px 10px 15px 15px;
+        ">
+            <table id="table2" style="width: 100%;height: 100%;">
+                <thead>
+                    <tr style="text-align:center;color: #42b3ef;font-weight: bold;font-size: 16px;">
+                        <td>序号</td>
+                        <td>物料号</td>
+                        <td>物料描述</td>
+                        <td>实时库存</td>
+                        <td>安全库存</td>
+                        <td>状态</td>
+                    </tr>
+                </thead>
+                <tbody style="color:#58d26d;text-align:center;">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="./jq.js"></script>
+    <script>
+        $(() => {
+            var msg = [
+                "\n %c %c %c MACROINF  - ✰  MES系统/SCADA数据采集/数据可视化/私有云平台  ✰  %c  %c  %c  http://www.macroinf.com/  %c %c ♥%c♥%c♥ \n\n",
+                "background: #ff66a5; padding:5px 0;",
+                "background: #ff66a5; padding:5px 0;",
+                "color: #ff66a5; background: #030307; padding:5px 0;",
+                "background: #ff66a5; padding:5px 0;",
+                "background: #ffc3dc; padding:5px 0;",
+                "background: #ffc3dc; padding:5px 0;",
+                "background: #ff66a5; padding:5px 0;",
+                "color: #ff2424; background: #fff; padding:5px 0;",
+                "color: #ff2424; background: #fff; padding:5px 0;",
+                "color: #ff2424; background: #fff; padding:5px 0;"
+            ];
+            window.console.log.apply(console, msg)
+        });
+
+        function scale() {
+            var winWidth = screen.width;
+            var winHeight = screen.height;
+
+            var docWidth = document.body.clientWidth;
+            var docHeight = document.body.clientHeight;
+
+            var wp = docWidth / winWidth;//宽度缩放比例
+            var hp = docHeight / winHeight;//高度缩放比例
+
+            var $div = $('#content');
+            $div.css('transform', "scale(" + wp + "," + hp + ")");
+            $div.css('transform-origin', "0 0");
+        }
+
+        scale();
+        window.onresize = function () {
+            scale();
+        }
+    </script>
+    <script>
+        var timerele = document.getElementById('time');
+        var dateele = document.getElementById('date');
+        var weekele = document.getElementById('week');
+
+        //获得服务器日期
+        function getDatetime() {
+            $.ajax({
+                type: "POST",
+                async: true,
+                timeout: 15000,
+                url: '../submit/Screen.ashx?type=getDate',
+                success: function (backData) {
+                    var data = backData;
+                    if (data == null || data == '') {
+                        console('获取服务器时间失败');
+                    }
+                    else {
+                        var arr = data.split("|");
+                        if (arr.length == 3) {
+                            timerele.innerText = arr[1];
+                            dateele.innerText = arr[0];
+                            weekele.innerText = arr[2];
+                        }
+                    }
+                }
+            });
+        }
+
+        $(() => {
+            getDatetime();
+            //时间定时器
+            setInterval(() => {
+                getDatetime();
+            }, 30000);
+
+        });
+
+    </script>
+    <script>
+
+        $(() => {
+            var list1 = [];
+            var list2 = [];
+
+            function autoScroll1(tableID, list) {
+                var tableUl = $(tableID);
+                var first = tableUl.find('tr:eq(1)');
+                $("#table1 tr:not(:first)").remove();
+                var count = 0;
+                if (index1 >= list.length) index1 = 0;
+                for (; index1 < list.length; index1++) {
+                    console.log("正常："+count);
+
+                    var trstr = "<tr>"+
+                        "<td>" + (index1+1) + "</td>" +
+                        "<td>" + list[index1].PROD_LINE_CODE + "</td>" +
+                        "<td>" + list[index1].MAKE_ORDER + "</td>" +
+                        "<td>" + list[index1].MATERIAL_CODE + "</td>" +
+                        "<td>" + list[index1].MATERIAL_DES + "</td>" +
+                        "<td>" + list[index1].PLAN_COUNT + "</td>" +
+                        "<td>" + list[index1].NOWSTOCK + "</td>" +
+                        "<td>" + list[index1].MIN_COUNT + "</td>" +
+                        "<td>" + list[index1].READY_COUNT + "</td>" +
+                        "</tr>";
+                    tableUl.append(trstr);
+                    count++;
+
+                    if (count == 10) break;
+                }
+                for (; count < 10; count++) {
+                console.log("补充："+count);
+
+                    var trstr = "<tr>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "</tr>";
+                    tableUl.append(trstr);
+                }
+            }
+
+            function autoScroll2(tableID, list, index) {
+                var tableUl = $(tableID);
+                var first = tableUl.find('tr:eq(1)');
+                //first.animate({
+                //    height: 0
+                //}, 30000, function () {
+                $("#table2 tr:not(:first)").remove();
+                var count = 0;
+                if (index2 >= list.length) index2 = 0;
+
+                for (; index2 < list.length; index2++) {
+                    var trstr = (list[index2].STATUS == "缺料" ? "<tr style='color: #ef0e0e;' >" : "<tr>") +
+                        "<td>" + (index2+1) + "</td>" +
+                        "<td>" + list[index2].MATERIAL_CODE + "</td>" +
+                        "<td>" + list[index2].MATERIAL_DES + "</td>" +
+                        "<td>" + list[index2].STOCK_COUNT + "</td>" +
+                        "<td>" + list[index2].MIN_COUNT + "</td>" +
+                        "<td>" + list[index2].STATUS + "</td>" +
+                        "</tr>";
+                    tableUl.append(trstr);
+                    count++;
+                    if (count == 10) break;
+                }
+
+                for (; count < 10; count++) {
+                    var trstr = "<tr>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "</tr>";
+                    tableUl.append(trstr);
+                }
+                //})
+            }
+
+            var scrollTimer1 = null;
+            var index1 = 0;
+            function startScrollTimer1() {
+                $("#table1 tr:not(:first)").remove();
+                var len = list1.length;
+                len = len < 10 ? len : 10;
+                index1 = len;
+                var $table1 = $("#table1");
+
+                var i = 0;
+                for (; i < len; i++) {
+                    console.log(i);
+                    var trstr = "<tr>" +
+                        "<td>" + (i + 1) + "</td>" +
+                        "<td>" + list1[i].PROD_LINE_CODE + "</td>" +
+                        "<td>" + list1[i].MAKE_ORDER + "</td>" +
+                        "<td>" + list1[i].MATERIAL_CODE + "</td>" +
+                        "<td>" + list1[i].MATERIAL_DES + "</td>" +
+                        "<td>" + list1[i].PLAN_COUNT + "</td>" +
+                        "<td>" + list1[i].NOWSTOCK + "</td>" +
+                        "<td>" + list1[i].MIN_COUNT + "</td>" +
+                        "<td>" + list1[i].READY_COUNT + "</td>" +
+                        "</tr>";
+                    $table1.append(trstr);
+                }
+                for (; i < 10; i++) {
+                    var trstr = "<tr>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "</tr>";
+                    $table1.append(trstr);
+                }
+
+                scrollTimer1 = setInterval(function () {
+                    autoScroll1("#table1", list1, index1);
+                }, 10000);
+            }
+
+            var scrollTimer2 = null;
+            var index2 = 0;
+            function startScrollTimer2() {
+                $("#table2 tr:not(:first)").remove();
+                var len = list2.length;
+                len = len < 10 ? len : 10;
+                index2 = len;
+                $table2 = $("#table2");
+
+                var i = 0;
+                for (; i < len; i++) {
+                    var trstr = (list2[i].STATUS == "缺料" ? "<tr style='color: #ef0e0e;' >" : "<tr>") +
+                        "<td>" + (i + 1) + "</td>" +
+                        "<td>" + list2[i].MATERIAL_CODE + "</td>" +
+                        "<td>" + list2[i].MATERIAL_DES + "</td>" +
+                        "<td>" + list2[i].STOCK_COUNT + "</td>" +
+                        "<td>" + list2[i].MIN_COUNT + "</td>" +
+                        "<td>" + list2[i].STATUS + "</td>" +
+                        "</tr>";
+                    $table2.append(trstr);
+                }
+
+                for (; i < 10; i++) {
+                    var trstr = "<tr>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "</tr>";
+                    $table2.append(trstr);
+                }
+
+                scrollTimer2 = setInterval(function () {
+                    autoScroll2("#table2", list2, index2);
+                }, 10000);
+            }
+
+            function getTable1Data() {
+                $.ajax({
+                    type: "POST",
+                    async: true,
+                    timeout: 15000,
+                    url: '../submit/Screen.ashx?type=MO_BOM',
+                    success: function (backData) {
+                        var data = JSON.parse(backData);
+                        if (data == null || data == '') {
+                            console.log('获取TOP表格失败');
+                        }
+                        else {
+                            list1 = data;
+                            clearInterval(scrollTimer1);
+                            startScrollTimer1();
+                        }
+                    }
+                });
+            }
+            getTable1Data();
+            setInterval(() => {
+                getTable1Data();
+            }, 60000);
+
+            function getTable2Data() {
+                $.ajax({
+                    type: "POST",
+                    async: true,
+                    timeout: 15000,
+                    url: '../submit/Screen.ashx?type=WAREHOUSE_STOCK',
+                    success: function (backData) {
+                        var data = JSON.parse(backData);
+                        if (data == null || data == '') {
+                            console.log('获取BOTTOM表格失败');
+                        }
+                        else {
+                            list2 = data;
+                            clearInterval(scrollTimer2);
+                            startScrollTimer2();
+                        }
+                    }
+                });
+            }
+            getTable2Data();
+            setInterval(() => {
+                getTable2Data();
+            }, 60000);
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>
