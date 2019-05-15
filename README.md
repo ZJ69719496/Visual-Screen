@@ -21,10 +21,13 @@ window.onresize = function () {
 }  
 
 正常页面  
-![正常页面](https://github.com/ZJ69719496/Visual-Screen/blob/master/screen.png)  
+![正常页面](https://github.com/ZJ69719496/Visual-Screen/blob/master/s1.png)  
   
 变窄  
 ![变窄](https://github.com/ZJ69719496/Visual-Screen/blob/master/z.png)  
   
 变宽  
 ![变宽](https://github.com/ZJ69719496/Visual-Screen/blob/master/k.png)  
+
+正常页面2  
+![正常页面2](https://github.com/ZJ69719496/Visual-Screen/blob/master/s2.png)  
