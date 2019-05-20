@@ -7,6 +7,7 @@
 只要设置好每个内部元素的 left top width height（不要用百分比的值  直接用px就可以了  然后设置文档页面大小变化的事件）
 
 //随着浏览器窗体缩放页面
+
 function scale(SCALE) {
 
       var winWidth = screen.width;
