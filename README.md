@@ -8,6 +8,7 @@
 
 //随着浏览器窗体缩放页面
 function scale(SCALE) {
+
       var winWidth = screen.width;
       var winHeight = screen.height;
       var docWidth = $(window).width();
@@ -17,6 +18,7 @@ function scale(SCALE) {
       var $div = $('#content');
       $div.css('transform', "scale(" + wp + "," + hp + ")");
       $div.css('transform-origin', "0 0");
+      
 }
 
 正常页面  
